@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avinav Ghimire - Portfolio</title>
     <link rel="stylesheet" href="portfoloio.css">
+    <script src="portfolio.js"></script>
+
 </head>
 <body>
-  <header>
+  <header>____________
     <nav class="navbar">
       <div class="nav-container">
         <div class="logo">Avinav Ghimire</div>
@@ -17,6 +19,10 @@
           <li><a href="#qualifications">Qualifications</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
+        <!-- Added Theme Toggle Button with Icon in Navbar -->
+        <button id="themeToggle" class="theme-toggle-btn">
+          <span class="theme-icon">🌙</span>
+        </button>
       </div>
     </nav>
   </header>
@@ -42,27 +48,71 @@
       <p>I am currently in my second year of the BSc (Hons) Computer Science program at Biratnagar International College. Over the past year, I have built a solid foundation in programming and developed a strong interest in web development. I have gained basic proficiency in HTML and CSS and am now expanding my skills into JavaScript and Python. I’m passionate about creating responsive, user-friendly web applications and continuously improving my technical and problem-solving abilities.</p>
     </section>
 
-    <section class="skills-section">
-      <h2>Skills & Interests</h2>
-      <div class="skills-container">
-        <div class="skill-card">
-          <h3>🎮 Gaming</h3>
-          <p>Competitive games like Valorant</p>
+    <section class="media-showcase">
+      <h2>Media Gallery</h2>
+      <div class="media-container">
+        <div class="media-card video-card">
+          <div class="media-header">
+            <span class="media-icon">🎬</span>
+            <h3>The Avengers</h3>
+          </div>
+          <div class="media-wrapper">
+            <video controls>
+              <source src="The Avengers - _I'm Always Angry_ - Hulk SMASH Scene - Movie CLIP HD.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <p class="media-description">Experience the cinematic magic of Thor's legendary axe in action</p>
         </div>
-        <div class="skill-card">
-          <h3>⚽ Sports</h3>
-          <p>Football, Cricket, and Table Tennis</p>
-        </div>
-        <div class="skill-card">
-          <h3>🔐 Cybersecurity</h3>
-          <p>Aspiring Cybersecurity Officer</p>
-        </div>
-        <div class="skill-card">
-          <h3>💻 Web Development</h3>
-          <p>HTML, CSS, JavaScript, Python</p>
+
+        <div class="media-card audio-card">
+          <div class="media-header">
+            <span class="media-icon">🎵</span>
+            <h3>Bye Bye Audio</h3>
+          </div>
+          <div class="media-wrapper audio-wrapper">
+            <audio controls preload="metadata">
+              <source src="portfolio.mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+          <p class="media-description">A beautiful audio track that showcases creative sound design</p>
         </div>
       </div>
     </section>
+
+   <section id="skills" class="skills-section">
+  <h2>Skills & Interests</h2>
+
+  <div class="skill">
+    <p>HTML / CSS</p>
+    <div class="bar">
+      <div class="progress" data-progress="90"></div>
+    </div>
+  </div>
+
+  <div class="skill">
+    <p>JavaScript</p>
+    <div class="bar">
+      <div class="progress" data-progress="70"></div>
+    </div>
+  </div>
+
+  <div class="skill">
+    <p>Java</p>
+    <div class="bar">
+      <div class="progress" data-progress="60"></div>
+    </div>
+  </div>
+
+  <div class="skill">
+    <p>Python</p>
+    <div class="bar">
+      <div class="progress" data-progress="65"></div>
+    </div>
+  </div>
+</section>
+
 
     <section id="qualifications" class="qualification-section">
       <h2>My Qualifications</h2>
@@ -100,19 +150,100 @@
       </div>
     </section>
 
-    <section id="contact" class="contact-section">
-      <h2>Get In Touch</h2>
-      <div class="contact-info">
-        <div class="contact-card">
-          <h3>📧 Email</h3>
-          <p><a href="mailto:avinavghimire@gmail.com">avinavghimire@gmail.com</a></p>
-        </div>
-        <div class="contact-card">
-          <h3>📱 Phone</h3>
-          <p><a href="tel:+9779807394329">+977 9807394329</a></p>
+    <!-- Step 2: Contact Form -->
+<section id="contact" class="contact-section">
+  <h2>Contact Me</h2>
+  <form id="contactForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+<!-- Step 3: Portfolio Projects -->
+<section id="projects" class="projects-section">
+  <h2>My Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card" data-url="https://example.com/project1">
+      <div class="project-image">
+        <img src="bank.jpeg" alt="Banking System">
+        <div class="project-overlay">
+          <span class="view-btn">View Project →</span>
         </div>
       </div>
-    </section>
+      <div class="project-content">
+        <h3>Banking System</h3>
+        <p>A comprehensive banking application built with Java and MySQL, featuring user authentication, account management, and transaction processing.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Java</span>
+          <span class="tech-tag">MySQL</span>
+          <span class="tech-tag">OOP</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card" data-url="https://example.com/project2">
+      <div class="project-image">
+        <img src="cafe.jpeg" alt="Cafe Management">
+        <div class="project-overlay">
+          <span class="view-btn">View Project →</span>
+        </div>
+      </div>
+      <div class="project-content">
+        <h3>Cafe Management System</h3>
+        <p>A web-based cafe management application with inventory tracking, order management, and sales reporting capabilities. Built with HTML, CSS, and JavaScript.</p>
+        <div class="project-tech">
+          <span class="tech-tag">HTML/CSS</span>
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">Database</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card" data-url="https://example.com/project3">
+      <div class="project-image">
+        <img src="online shopping.jpeg" alt="E-Commerce Platform">
+        <div class="project-overlay">
+          <span class="view-btn">View Project →</span>
+        </div>
+      </div>
+      <div class="project-content">
+        <h3>E-Commerce Platform</h3>
+        <p>A full-featured online shopping platform with product catalog, shopping cart, payment integration, and order tracking system.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Frontend</span>
+          <span class="tech-tag">Backend</span>
+          <span class="tech-tag">Database</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Step 5: Image Slider -->
+<section id="slider" class="slider-section">
+  <h2>Image Slider</h2>
+  <div class="slider">
+    <img src="download (1).jpeg" class="slide" alt="Image 1">
+    <img src="download (2).jpeg" class="slide" alt="Image 2">
+    <img src="download.jpeg" class="slide" alt="Image 3">
+  </div>
+  <button id="prev">Previous</button>
+  <button id="next">Next</button>
+</section>
+
+<!-- Step 6: Dark/Light Mode Toggle -->
+<!-- <button id="themeToggle">Toggle Theme</button> Removed as it's now in the navbar -->
+
+<!-- Step 7: Back-to-Top Button -->
+<button id="backToTop">Back to Top</button>
   </main>
 
   <footer>

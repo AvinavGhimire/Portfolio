@@ -38,6 +38,14 @@ header::after {
   pointer-events: none;
 }
 
+.video-section {
+  display: none;
+}
+
+.audio-section {
+  display: none;
+}
+
 .nav-container {
   max-width: 1200px;
   margin: auto;
@@ -394,47 +402,36 @@ section h2 {
   font-weight: 600;
 }
 
-.skills-section {
-  background-color: transparent;
-  border-radius: 0;
-  box-shadow: none;
-  max-width: 1200px;
-  margin: 80px auto;
-  padding: 0 40px;
-  border-top: none;
-  border-image: none;
+/* Skills Section */
+#skills {
+  width: 80%;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
 }
 
-.skills-section h2 {
-  color: #ffffff;
+.skill {
+  margin-bottom: 20px;
 }
 
-.skills-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
+.skill p {
+  font-size: 18px;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
-.skill-card {
-  border: none;
-  border-radius: 0;
-  padding: 20px 0;
-  text-align: center;
-  background: transparent;
-  box-shadow: none;
-  transition: all 0.3s ease;
+.bar {
+  width: 100%;
+  background: #ddd;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-.skill-card:hover {
-  transform: translateY(-5px);
-  box-shadow: none;
-  border-top: none;
-}
-
-.skill-card h3 {
-  color: #ffffff;
-  margin-bottom: 10px;
-  font-size: 1.5em;
+.progress {
+  height: 20px;
+  width: 0;
+  background: #4CAF50;
+  border-radius: 20px;
+  transition: width 1.5s ease;
 }
 
 .contact-section {
@@ -631,3 +628,921 @@ footer {
     font-size: 1.1em;
   }
 }
+
+/* ========== MEDIA SHOWCASE SECTION (STEP 4: VIDEO & AUDIO) ========== */
+.media-showcase {
+  background: transparent;
+  max-width: 1200px;
+  margin: 100px auto 80px;
+  padding: 0 40px;
+}
+
+.media-showcase h2 {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 2.5em;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff 0%, #f093fb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.media-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  align-items: stretch;
+}
+
+.media-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(240, 147, 251, 0.08) 100%);
+  border: 2px solid rgba(240, 147, 251, 0.3);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(240, 147, 251, 0.1);
+}
+
+.media-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(240, 147, 251, 0.2), transparent);
+  transition: left 0.6s ease;
+  z-index: 0;
+}
+
+.media-card:hover::before {
+  left: 100%;
+}
+
+.media-card:hover {
+  transform: translateY(-10px);
+  border-color: #f093fb;
+  box-shadow: 0 15px 50px rgba(240, 147, 251, 0.3), 0 0 30px rgba(240, 147, 251, 0.2);
+}
+
+.media-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.media-icon {
+  font-size: 2.5em;
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.media-header h3 {
+  color: #ffffff;
+  font-size: 1.5em;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, #ffffff 0%, #f093fb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.media-wrapper {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.media-wrapper video,
+.media-wrapper audio {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+}
+
+.media-wrapper video {
+  height: auto;
+  max-height: 350px;
+  object-fit: cover;
+}
+
+.audio-wrapper {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(79, 172, 254, 0.15) 0%, rgba(240, 147, 251, 0.15) 100%);
+}
+
+.audio-wrapper audio {
+  max-width: 100%;
+}
+
+.media-description {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95em;
+  text-align: center;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+  line-height: 1.6;
+}
+
+/* Dark Mode Media Cards */
+body.dark-mode .media-card {
+  background: linear-gradient(135deg, rgba(50, 50, 80, 0.3) 0%, rgba(83, 52, 131, 0.2) 100%);
+  border-color: rgba(240, 147, 251, 0.2);
+}
+
+body.dark-mode .media-card:hover {
+  box-shadow: 0 15px 50px rgba(240, 147, 251, 0.2), 0 0 30px rgba(240, 147, 251, 0.15);
+  border-color: #f093fb;
+}
+
+body.dark-mode .media-wrapper {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .audio-wrapper {
+  background: linear-gradient(135deg, rgba(15, 52, 96, 0.3) 0%, rgba(83, 52, 131, 0.2) 100%);
+}
+
+/* ========== STEP 1: ANIMATED SKILL PROGRESS BARS ========== */
+.skills-section {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.skill {
+  margin-bottom: 30px;
+  animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.skill p {
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.bar {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  height: 25px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.progress {
+  height: 25px;
+  width: 0;
+  background: linear-gradient(90deg, #4CAF50 0%, #45a049 100%);
+  border-radius: 20px;
+  transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+/* ========== STEP 2: CONTACT FORM STYLING ========== */
+#contactForm {
+  max-width: 600px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+#contactForm label {
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+  display: block;
+}
+
+#contactForm input,
+#contactForm textarea {
+  padding: 12px 15px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-family: inherit;
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+
+#contactForm input:focus,
+#contactForm textarea:focus {
+  outline: none;
+  border-color: #f093fb;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 10px rgba(240, 147, 251, 0.3);
+}
+
+#contactForm textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+#contactForm button {
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
+}
+
+#contactForm button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 87, 108, 0.5);
+}
+
+/* ========== STEP 3: PROJECTS SECTION ========== */
+.projects-section {
+  background: transparent;
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 40px;
+}
+
+.projects-section h2 {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 2.5em;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff 0%, #f093fb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  align-items: stretch;
+}
+
+.project-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(240, 147, 251, 0.05) 100%);
+  border: 2px solid rgba(240, 147, 251, 0.3);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(240, 147, 251, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  border-color: #f093fb;
+  box-shadow: 0 15px 50px rgba(240, 147, 251, 0.3), 0 0 30px rgba(240, 147, 251, 0.2);
+}
+
+.project-image {
+  position: relative;
+  overflow: hidden;
+  height: 250px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.1);
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(240, 147, 251, 0.9) 0%, rgba(245, 87, 108, 0.9) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.view-btn {
+  color: #ffffff;
+  font-size: 1.1em;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.project-content {
+  padding: 30px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-content h3 {
+  color: #ffffff;
+  font-size: 1.5em;
+  margin-bottom: 12px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff 0%, #f093fb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.project-content p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.project-tech {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tech-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(240, 147, 251, 0.3) 0%, rgba(79, 172, 254, 0.3) 100%);
+  border: 1px solid rgba(240, 147, 251, 0.5);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+  background: linear-gradient(135deg, rgba(240, 147, 251, 0.5) 0%, rgba(79, 172, 254, 0.5) 100%);
+  border-color: #f093fb;
+  transform: scale(1.05);
+}
+
+/* Dark mode projects */
+body.dark-mode .project-card {
+  background: linear-gradient(135deg, rgba(50, 50, 80, 0.3) 0%, rgba(83, 52, 131, 0.2) 100%);
+  border-color: rgba(240, 147, 251, 0.2);
+}
+
+body.dark-mode .project-card:hover {
+  box-shadow: 0 15px 50px rgba(240, 147, 251, 0.2), 0 0 30px rgba(240, 147, 251, 0.15);
+}
+
+body.dark-mode .project-image {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+/* Responsive projects */
+@media (max-width: 768px) {
+  .projects-section {
+    margin: 60px auto;
+    padding: 0 20px;
+  }
+
+  .projects-section h2 {
+    font-size: 2em;
+    margin-bottom: 40px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .project-card {
+    max-width: 100%;
+  }
+
+  .project-content {
+    padding: 20px;
+  }
+
+  .project-content h3 {
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-section {
+    margin: 50px auto;
+    padding: 0 15px;
+  }
+
+  .projects-section h2 {
+    font-size: 1.6em;
+    margin-bottom: 30px;
+  }
+
+  .project-image {
+    height: 200px;
+  }
+
+  .project-content {
+    padding: 15px;
+  }
+
+  .project-content h3 {
+    font-size: 1.2em;
+  }
+
+  .project-content p {
+    font-size: 0.9em;
+  }
+
+  .tech-tag {
+    font-size: 0.8em;
+    padding: 4px 10px;
+  }
+}
+
+/* ========== STEP 4: CANVAS STYLING ========== */
+.canvas-section {
+  text-align: center;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.canvas-section h2 {
+  color: #ffffff;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+.canvas-toolbar {
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.toolbar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toolbar-item label {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+#colorPicker {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(240, 147, 251, 0.5);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#colorPicker:hover {
+  border-color: #f093fb;
+  box-shadow: 0 0 15px rgba(240, 147, 251, 0.6);
+  transform: scale(1.05);
+}
+
+.canvas-btn {
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
+  font-size: 1em;
+}
+
+.canvas-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 87, 108, 0.5);
+}
+
+.canvas-btn:active {
+  transform: translateY(0);
+}
+
+.clear-btn {
+  background: linear-gradient(135deg, #ff6347 0%, #ff4500 100%);
+}
+
+.clear-btn:hover {
+  box-shadow: 0 6px 20px rgba(255, 99, 71, 0.5);
+}
+
+#drawingCanvas {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(240, 147, 251, 0.3);
+  cursor: crosshair;
+  display: block;
+  margin: 20px auto;
+  border: 3px solid rgba(240, 147, 251, 0.5);
+  transition: all 0.3s ease;
+  max-width: 100%;
+  height: auto;
+}
+
+#drawingCanvas:hover {
+  box-shadow: 0 12px 40px rgba(240, 147, 251, 0.5);
+  border-color: #f093fb;
+}
+
+/* Dark mode canvas */
+body.dark-mode #drawingCanvas {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-color: rgba(240, 147, 251, 0.3);
+}
+
+body.dark-mode #drawingCanvas:hover {
+  border-color: #f093fb;
+  box-shadow: 0 12px 40px rgba(240, 147, 251, 0.3);
+}
+
+body.dark-mode .canvas-section {
+  background: rgba(50, 50, 80, 0.2);
+}
+
+/* Responsive canvas */
+@media (max-width: 768px) {
+  #drawingCanvas {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .canvas-btn {
+    padding: 10px 24px;
+    font-size: 0.95em;
+  }
+
+  .canvas-toolbar {
+    gap: 15px;
+  }
+
+  #colorPicker {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .canvas-section {
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  #drawingCanvas {
+    width: 100%;
+    height: auto;
+    margin: 15px auto;
+  }
+
+  .canvas-btn {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+
+  .canvas-toolbar {
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .toolbar-item {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #colorPicker {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ========== STEP 5: IMAGE SLIDER STYLING ========== */
+.slider-section {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.slider {
+  position: relative;
+  max-width: 600px;
+  margin: 30px auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.slide {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: none;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.slide.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#prev, #next {
+  padding: 12px 24px;
+  background: rgba(240, 147, 251, 0.8);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin: 0 10px;
+}
+
+#prev:hover, #next:hover {
+  background: rgba(240, 147, 251, 1);
+  transform: scale(1.05);
+}
+
+/* ========== STEP 6: DARK/LIGHT MODE TOGGLE ========== */
+.theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: all 0.3s ease;
+  margin-left: 20px;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: #f093fb;
+  transform: rotate(20deg);
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #2a2a4e 100%);
+  color: #e0e0e0;
+}
+
+body.dark-mode header {
+  background: linear-gradient(135deg, rgba(15, 52, 96, 0.95) 0%, rgba(83, 52, 131, 0.95) 50%, rgba(26, 26, 46, 0.95) 100%);
+  border-bottom-color: rgba(240, 147, 251, 0.2);
+}
+
+body.dark-mode section {
+  color: #e0e0e0;
+}
+
+body.dark-mode section h2 {
+  color: #f093fb;
+}
+
+body.dark-mode #contactForm {
+  background: rgba(30, 30, 50, 0.5);
+}
+
+body.dark-mode #contactForm input,
+body.dark-mode #contactForm textarea {
+  background: rgba(50, 50, 80, 0.3);
+  border-color: rgba(240, 147, 251, 0.3);
+  color: #e0e0e0;
+}
+
+body.dark-mode .project {
+  background: rgba(50, 50, 80, 0.3);
+  border-color: rgba(240, 147, 251, 0.2);
+  color: #e0e0e0;
+}
+
+body.dark-mode .bar {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .skill p {
+  color: #e0e0e0;
+}
+
+body.dark-mode footer {
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+}
+
+/* ========== STEP 7: BACK-TO-TOP BUTTON ========== */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2em;
+  display: none;
+  z-index: 999;
+  box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+  transition: all 0.3s ease;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#backToTop:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+}
+
+#backToTop.show {
+  display: flex;
+}
+
+/* ========== STEP 8: FLEXBOX & GRID LAYOUT ========== */
+/* Using Grid for Projects Section (already applied above) */
+/* Using Flexbox for Skills Section */
+.skills-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .projects-section {
+    grid-template-columns: 1fr;
+  }
+
+  #contactForm {
+    padding: 20px;
+  }
+
+  #backToTop {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+
+  .slider {
+    max-width: 100%;
+  }
+
+  .slide {
+    height: 300px;
+  }
+
+  .media-showcase {
+    margin: 60px auto 50px;
+    padding: 0 20px;
+  }
+
+  .media-showcase h2 {
+    font-size: 2em;
+    margin-bottom: 40px;
+  }
+
+  .media-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .media-card {
+    padding: 20px;
+  }
+
+  .media-header {
+    margin-bottom: 20px;
+  }
+
+  .media-icon {
+    font-size: 2em;
+  }
+
+  .media-header h3 {
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 480px) {
+  .media-showcase {
+    margin: 40px auto 30px;
+    padding: 0 15px;
+  }
+
+  .media-showcase h2 {
+    font-size: 1.6em;
+    margin-bottom: 30px;
+  }
+
+  .media-card {
+    padding: 15px;
+    border-radius: 15px;
+  }
+
+  .media-header {
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .media-icon {
+    font-size: 1.8em;
+  }
+
+  .media-header h3 {
+    font-size: 1.1em;
+  }
+
+  .media-description {
+    font-size: 0.85em;
+  }
+}
+
